@@ -8,11 +8,19 @@
   outputs = { self, nixpkgs, rust-overlay, flake-utils, ... }:
     flake-utils.lib.eachDefaultSystem (system:
       let
+        appname = "<appname>";
+        version = "<version>";
         overlays = [ (import rust-overlay) ];
         pkgs = import nixpkgs { inherit system overlays; };
+        shell = import ./nix/shell.nix { inherit pkgs; };
+        build = import ./nix/build.nix { inherit appname version pkgs overlays; };
       in
       {
-        devShells.default = import ./nix/dev-shell.nix { inherit pkgs; };
+        devShells.default = shell.default;
+        package = {
+          "${appname}" = build.default;
+          default = build.default;
+        };
       }
     );
 }
