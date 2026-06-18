@@ -14,13 +14,13 @@
       appname = "<appname>";
       version = "<version>";
       pkgs = import nixpkgs { inherit system; };
-      app = import ./nix/packages.nix { inherit pkgs appname version; };
+      build = import ./nix/build.nix { inherit pkgs appname version; };
       shell = import ./nix/shell.nix { inherit pkgs; };
     in
     {
       packages = {
-        "${appname}" = app;
-        default = app;
+        "${appname}" = build.default;
+        default = build.default;
       };
       devShells.default = shell.default;
     });
