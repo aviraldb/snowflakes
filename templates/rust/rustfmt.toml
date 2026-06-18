@@ -1,0 +1,23 @@
+edition = "2021"
+
+# Line width —
+max_width = 100
+use_small_heuristics = "Max"
+
+# Imports —
+imports_granularity = "Crate"
+group_imports = "StdExternalCrate"
+
+# Consistency
+newline_style = "Unix"
+tab_spaces = 4
+hard_tabs = false
+
+# Trailing commas on multiline — 
+trailing_comma = "Vertical"
+
+# Cleaner fn signatures
+fn_params_layout = "Tall"
+
+# Collapse where possible
+collapse_derives = true
