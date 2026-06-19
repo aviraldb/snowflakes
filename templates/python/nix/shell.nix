@@ -1,6 +1,6 @@
 { pkgs, system }:
 {
-  default = {
+  default = pkgs.mkShell {
     packages = with pkgs; [
       fish
       # Install Python with defined packages
@@ -14,5 +14,10 @@
       stdenv.cc.cc.lib
       libz
     ];
+
+    shellHook = ''
+      exec /bin/fish
+    '';
+
   };
 }

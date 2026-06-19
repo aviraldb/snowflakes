@@ -13,11 +13,11 @@ in
       openssl
     ];
     packages = with pkgs; [
-        fish
+      fish
     ];
     OPENSSL_NO_VENDOR = 1;
     shellHook = ''
-      exec "$SHELL"
+      exec /bin/fish
     '';
   };
 }

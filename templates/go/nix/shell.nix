@@ -8,7 +8,7 @@
                 golangci-lint # linter
         ];
         shellHook = ''
-            exec $SHELL
+            exec /bin/fish
             '';
     };
 }
